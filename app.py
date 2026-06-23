@@ -10,7 +10,7 @@ app = Flask(__name__, template_folder='.')
 
 # CONFIGURAÇÕES DO GOOGLE (Versão de Leitura com Conta de Serviço)
 SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
-SERVICE_ACCOUNT_FILE = 'vibrant-mind-497100-r4-ab6c14ec71fb.json'
+SERVICE_ACCOUNT_FILE = 'credenciais.json'
 FOLDER_ID = '1au7OjN-qA-ftx-V1lBKmurMF4Kb7heQw' # ID corrigido sem o ?hl=pt-br
 
 def get_drive_service():
