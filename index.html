@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos - 15 Anos da Malu</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variáveis de Cores inspiradas no tema */
+        :root {
+            --cor-fundo: #faf6f6; /* Fundo off-white puxado pro rosa */
+            --cor-primaria: #c27ba0; /* Rosa antigo / Rosé */
+            --cor-secundaria: #8e5c76; /* Rosé mais escuro para hover */
+            --cor-texto: #4a4a4a; /* Cinza chumbo elegante */
+            --cor-branco: #ffffff;
+        }
+
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--cor-fundo); 
+            margin: 0; 
+            padding: 0; 
+            color: var(--cor-texto); 
+        }
+
+        /* SEÇÃO DE HOMENAGEM (HERO) */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background-color: var(--cor-branco);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            margin-bottom: 40px;
+        }
+
+        .hero h1 { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--cor-primaria); 
+            font-size: 2.5rem; 
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .homenagem-texto {
+            font-style: italic;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        /* SEÇÃO DE INSTRUÇÕES */
+        .instrucoes-container {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+
+        .card-instrucoes {
+            background: var(--cor-branco);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(194, 123, 160, 0.15);
+            border-top: 4px solid var(--cor-primaria);
+            text-align: center;
+        }
+
+        .card-instrucoes h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--cor-primaria);
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        .passo-a-passo {
+            text-align: left;
+            margin: 20px auto;
+            max-width: 500px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .passo-a-passo span {
+            font-weight: bold;
+            color: var(--cor-primaria);
+        }
+
+        /* BOTÕES */
+        .btn {
+            display: inline-block;
+            background-color: var(--cor-primaria);
+            color: var(--cor-branco);
+            text-decoration: none;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 15px;
+        }
+
+        .btn:hover { 
+            background-color: var(--cor-secundaria); 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn-secundario {
+            background-color: transparent;
+            color: var(--cor-primaria);
+            border: 1px solid var(--cor-primaria);
+        }
+
+        .btn-secundario:hover {
+            background-color: var(--cor-primaria);
+            color: var(--cor-branco);
+        }
+
+        /* SEÇÃO DA GALERIA */
+        .galeria-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .galeria-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eadce1;
+            padding-bottom: 15px;
+        }
+
+        .galeria-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--cor-texto);
+            margin: 0;
+        }
+
+        .galeria { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 25px; 
+        }
+
+        /* Estilo das Fotos (estilo Polaroid/Moldura elegante) */
+        .foto-card { 
+            background: var(--cor-branco); 
+            border-radius: 8px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            transition: transform 0.3s;
+            padding: 10px 10px 0 10px;
+        }
+
+        .foto-card:hover { 
+            transform: scale(1.02); 
+            box-shadow: 0 8px 25px rgba(194, 123, 160, 0.2);
+        }
+
+        .foto-card img { 
+            width: 100%; 
+            height: 250px; 
+            object-fit: cover; 
+            border-radius: 4px;
+            background-color: #f5f5f5; 
+        }
+
+        .foto-info { 
+            padding: 15px 5px; 
+            font-size: 0.85rem; 
+            text-align: center; 
+            color: #888;
+            font-style: italic;
+        }
+
+        .status-msg { 
+            text-align: center; 
+            font-size: 1.1rem; 
+            color: #888; 
+            grid-column: 1 / -1; 
+            padding: 40px; 
+        }
+
+        /* Responsividade para celular */
+        @media (max-width: 600px) {
+            .galeria-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>15 Anos da Malu</h1>
+        <p class="homenagem-texto">
+            "A vida é feita de momentos, e eu quero viver cada um deles intensamente!"
+        </p>
+        <p style="max-width: 600px; margin: 0 auto;">
+            Obrigada por fazer parte desta etapa tão especial da minha vida. Esta galeria é nossa! Ajude a eternizar essa noite mágica compartilhando os momentos pelo seu ponto de vista.
+        </p>
+    </header>
+
+    <section class="instrucoes-container">
+        <div class="card-instrucoes">
+            <h2>Como enviar suas fotos?</h2>
+            
+            <div class="passo-a-passo">
+                <p><span>Passo 1:</span> Clique no botão abaixo para abrir a nossa pasta segura.</p>
+                <p><span>Passo 2:</span> Na tela que abrir, envie todas as fotos e vídeos que você tirou na festa.</p>
+                <p><span>Passo 3:</span> Volte para esta página e veja os seus registros (e os de todos os convidados) aparecerem na nossa galeria!</p>
+            </div>
+
+            <a href="https://drive.google.com/drive/folders/1au7OjN-qA-ftx-V1lBKmurMF4Kb7heQw?usp=sharing" target="_blank" class="btn">
+                📤 Abrir Pasta para Enviar Fotos
+            </a>
+        </div>
+    </section>
+
+    <section class="galeria-section">
+        <div class="galeria-header">
+            <h2>Nossos Momentos</h2>
+            <button onclick="carregarGaleria()" class="btn btn-secundario">Atualizar Galeria</button>
+        </div>
+        
+        <div class="galeria" id="galeria">
+            <div class="status-msg">Carregando a magia... ✨</div>
+        </div>
+    </section>
+
+    <script>
+        async function carregarGaleria() {
+            const container = document.getElementById('galeria');
+            
+            try {
+                const response = await fetch('/api/fotos');
+                const resultado = await response.json();
+                
+                if (resultado.status === 'erro') {
+                    container.innerHTML = `
+                        <div class="status-msg" style="color: #b71c1c; background-color: #ffebee; border: 1px solid #ffcdd2; padding: 20px; border-radius: 8px; text-align: left; max-width: 800px; margin: 0 auto;">
+                            <strong>⚠️ Erro na Integração:</strong><br><br>${resultado.mensagem}
+                        </div>`;
+                    return;
+                }
+                
+                const fotos = resultado.dados;
+                container.innerHTML = '';
+                
+                if (fotos.length === 0) {
+                    container.innerHTML = '<div class="status-msg">Ainda não há fotos por aqui. Seja o primeiro a compartilhar! 📸</div>';
+                    return;
+                }
+
+                fotos.forEach(foto => {
+                    const card = document.createElement('div');
+                    card.className = 'foto-card';
+                    card.innerHTML = `
+                        <img src="/api/foto/${foto.id}" alt="${foto.name}" loading="lazy">
+                        <div class="foto-info">Compartilhado com carinho</div>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                container.innerHTML = '<div class="status-msg" style="color: red;">Erro crítico ao se conectar com o servidor.</div>';
+                console.error(error);
+            }
+        }
+
+        // Inicia a galeria
+        carregarGaleria();
+
+        // Atualiza as fotos automaticamente a cada 10 segundos
+        setInterval(carregarGaleria, 10000);
+    </script>
+</body>
+</html>
