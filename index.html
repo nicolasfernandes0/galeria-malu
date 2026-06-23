@@ -5,16 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Galeria de Fotos - 15 Anos da Malu</title>
     
-    <!-- Fontes elegantes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
+        *, *::before, *::after { box-sizing: border-box; }
         :root {
             --cor-fundo: #faf6f6;
             --cor-primaria: #c27ba0;
@@ -22,261 +18,49 @@
             --cor-texto: #4a4a4a;
             --cor-branco: #ffffff;
         }
-
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: var(--cor-fundo); 
-            margin: 0; 
-            padding: 0; 
-            color: var(--cor-texto); 
-        }
-
-        /* SEÇÃO DE HOMENAGEM (HERO) */
-        .hero {
-            text-align: center;
-            padding: 60px 20px 40px;
-            background-color: var(--cor-branco);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            margin-bottom: 40px;
-        }
-
-        .hero h1 { 
-            font-family: 'Playfair Display', serif; 
-            color: var(--cor-primaria); 
-            font-size: 2.5rem; 
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .homenagem-texto {
-            font-style: italic;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 20px;
-            color: #777;
-            line-height: 1.6;
-        }
-
-        .hero p:last-child {
-            max-width: 600px; 
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* SEÇÃO DE INSTRUÇÕES */
-        .instrucoes-container {
-            max-width: 800px;
-            margin: 0 auto 50px;
-            padding: 0 20px;
-        }
-
-        .card-instrucoes {
-            background: var(--cor-branco);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(194, 123, 160, 0.15);
-            border-top: 4px solid var(--cor-primaria);
-            text-align: center;
-        }
-
-        .card-instrucoes h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--cor-primaria);
-            margin-top: 0;
-            font-size: 1.8rem;
-        }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--cor-fundo); margin: 0; padding: 0; color: var(--cor-texto); }
         
-        .texto-destaque {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            color: var(--cor-texto);
-        }
+        .hero { text-align: center; padding: 60px 20px 40px; background-color: var(--cor-branco); box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 40px; }
+        .hero h1 { font-family: 'Playfair Display', serif; color: var(--cor-primaria); font-size: 2.5rem; margin-top: 0; margin-bottom: 10px; font-weight: 600; }
+        .homenagem-texto { font-style: italic; font-size: 1.1rem; max-width: 600px; margin: 0 auto 20px; color: #777; line-height: 1.6; }
+        .hero p:last-child { max-width: 600px; margin: 0 auto; line-height: 1.6; }
 
-        .passo-a-passo {
-            text-align: left;
-            margin: 0 auto 30px;
-            max-width: 550px;
-            font-size: 1.05rem;
-            line-height: 1.6;
-        }
+        .instrucoes-container { max-width: 800px; margin: 0 auto 50px; padding: 0 20px; }
+        .card-instrucoes { background: var(--cor-branco); padding: 40px; border-radius: 12px; box-shadow: 0 8px 20px rgba(194, 123, 160, 0.15); border-top: 4px solid var(--cor-primaria); text-align: center; }
+        .card-instrucoes h2 { font-family: 'Playfair Display', serif; color: var(--cor-primaria); margin-top: 0; font-size: 1.8rem; margin-bottom: 10px; }
+        .texto-destaque { font-size: 1.05rem; line-height: 1.6; margin-bottom: 25px; color: var(--cor-texto); }
 
-        .passo-a-passo p {
-            margin-bottom: 15px;
-        }
+        .upload-direto { background-color: #fcf8fa; border: 2px dashed #e8c5d8; padding: 30px 20px; border-radius: 12px; margin: 20px auto; max-width: 500px; display: flex; flex-direction: column; align-items: center; gap: 15px; transition: all 0.3s ease; }
+        .upload-direto:hover { border-color: var(--cor-primaria); background-color: #fdf5f9; }
+        input[type="file"] { display: none; }
+        .btn-escolher { background-color: var(--cor-branco); color: var(--cor-primaria); border: 2px solid var(--cor-primaria); padding: 12px 24px; font-size: 1rem; font-weight: 600; border-radius: 30px; cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-escolher:hover { background-color: var(--cor-primaria); color: var(--cor-branco); }
+        .nome-arquivo { font-size: 0.9rem; color: #777; font-style: italic; word-break: break-word; text-align: center;}
+        
+        .btn { background-color: var(--cor-primaria); color: var(--cor-branco); text-decoration: none; padding: 16px 28px; font-size: 1rem; font-weight: 600; border-radius: 30px; border: none; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; width: 100%; max-width: 300px; }
+        .btn:hover { background-color: var(--cor-secundaria); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn:disabled { background-color: #ccc; cursor: not-allowed; }
+        
+        .btn-secundario { background-color: transparent; color: var(--cor-primaria); border: 1px solid var(--cor-primaria); }
+        .btn-secundario:hover { background-color: var(--cor-primaria); color: var(--cor-branco); }
 
-        .passo-a-passo span {
-            font-weight: bold;
-            color: var(--cor-primaria);
-            display: inline-block;
-            margin-bottom: 5px;
-        }
+        .galeria-section { max-width: 1200px; margin: 0 auto; padding: 0 20px 60px; }
+        .galeria-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #eadce1; padding-bottom: 15px; }
+        .galeria-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--cor-texto); margin: 0; }
+        .galeria { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        
+        .foto-card { background: var(--cor-branco); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s; padding: 10px 10px 0 10px; }
+        .foto-card:hover { transform: scale(1.02); box-shadow: 0 8px 25px rgba(194, 123, 160, 0.2); }
+        .foto-card img { width: 100%; height: 250px; object-fit: cover; border-radius: 4px; background-color: #f5f5f5; }
+        .foto-info { padding: 15px 5px; font-size: 0.85rem; text-align: center; color: #888; font-style: italic; }
+        .status-msg { text-align: center; font-size: 1.1rem; color: #888; grid-column: 1 / -1; padding: 40px 20px; }
 
-        /* BOTÕES */
-        .btn {
-            display: inline-block;
-            background-color: var(--cor-primaria);
-            color: var(--cor-branco);
-            text-decoration: none;
-            padding: 16px 28px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            width: auto;
-            margin-top: 10px;
-        }
-
-        .btn:hover { 
-            background-color: var(--cor-secundaria); 
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .btn-secundario {
-            background-color: transparent;
-            color: var(--cor-primaria);
-            border: 1px solid var(--cor-primaria);
-        }
-
-        .btn-secundario:hover {
-            background-color: var(--cor-primaria);
-            color: var(--cor-branco);
-        }
-
-        /* LINKS PARA BAIXAR O APP */
-        .botoes-app {
-            display: flex;
-            justify-content: flex-start;
-            gap: 15px;
-            margin-top: 10px;
-            margin-bottom: 25px;
-        }
-
-        .btn-app {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f8f9fa;
-            color: var(--cor-texto);
-            text-decoration: none;
-            padding: 10px 18px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            transition: all 0.2s ease;
-        }
-
-        .btn-app:hover {
-            background-color: var(--cor-primaria);
-            color: var(--cor-branco);
-            border-color: var(--cor-primaria);
-        }
-
-        /* SEÇÃO DA GALERIA */
-        .galeria-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px 60px;
-        }
-
-        .galeria-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #eadce1;
-            padding-bottom: 15px;
-        }
-
-        .galeria-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--cor-texto);
-            margin: 0;
-        }
-
-        .galeria { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-            gap: 20px; 
-        }
-
-        .foto-card { 
-            background: var(--cor-branco); 
-            border-radius: 8px; 
-            overflow: hidden; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-            transition: transform 0.3s;
-            padding: 10px 10px 0 10px;
-        }
-
-        .foto-card:hover { 
-            transform: scale(1.02); 
-            box-shadow: 0 8px 25px rgba(194, 123, 160, 0.2);
-        }
-
-        .foto-card img { 
-            width: 100%; 
-            height: 250px; 
-            object-fit: cover; 
-            border-radius: 4px;
-            background-color: #f5f5f5; 
-        }
-
-        .foto-info { 
-            padding: 15px 5px; 
-            font-size: 0.85rem; 
-            text-align: center; 
-            color: #888;
-            font-style: italic;
-        }
-
-        .status-msg { 
-            text-align: center; 
-            font-size: 1.1rem; 
-            color: #888; 
-            grid-column: 1 / -1; 
-            padding: 40px 20px; 
-        }
-
-        /* RESPONSIVIDADE PARA CELULARES */
         @media (max-width: 768px) {
             .hero { padding: 40px 15px 30px; }
             .hero h1 { font-size: 2rem; }
             .card-instrucoes { padding: 25px 15px; }
-            .card-instrucoes h2 { font-size: 1.5rem; }
-            .passo-a-passo { font-size: 1rem; }
-            
-            .botoes-app { 
-                flex-direction: column; 
-                gap: 10px; 
-                align-items: stretch;
-            }
-
-            .btn {
-                width: 100%;
-                display: block;
-                padding: 15px;
-            }
-
-            .galeria-header {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-            .galeria-header h2 { font-size: 1.7rem; }
-            
-            .galeria {
-                grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
-                gap: 25px;
-            }
+            .galeria-header { flex-direction: column; gap: 20px; text-align: center; }
+            .galeria { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); gap: 25px; }
             .foto-card img { height: 300px; }
         }
     </style>
@@ -285,44 +69,21 @@
 
     <header class="hero">
         <h1>15 Anos da Malu</h1>
-        <p class="homenagem-texto">
-            "A vida é feita de momentos, e eu quero viver cada um deles intensamente!"
-        </p>
-        <p>
-            Obrigada por fazer parte desta etapa tão especial da minha vida. Esta galeria é nossa! Ajude a eternizar essa noite mágica compartilhando os momentos pelo seu ponto de vista.
-        </p>
+        <p class="homenagem-texto">"A vida é feita de momentos, e eu quero viver cada um deles intensamente!"</p>
+        <p>Obrigada por fazer parte desta etapa tão especial da minha vida. Ajude a eternizar essa noite mágica compartilhando os momentos pelo seu celular!</p>
     </header>
 
     <section class="instrucoes-container">
         <div class="card-instrucoes">
-            <h2>Como adicionar suas fotos?</h2>
+            <h2>Envie suas fotos agora</h2>
+            <p class="texto-destaque">Escolha uma foto da sua galeria ou tire uma nova câmera e envie direto por aqui.</p>
             
-            <p class="texto-destaque">
-                Para enviar fotos direto do seu celular, você precisará ter o aplicativo do <strong>Google Drive</strong> instalado. Siga os passos:
-            </p>
-            
-            <div class="passo-a-passo">
-                <p><span>Passo 1: Baixe o App (se ainda não tiver)</span></p>
-                <div class="botoes-app">
-                    <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.docs" target="_blank" class="btn-app">
-                        🤖 Instalar no Android
-                    </a>
-                    <a href="https://apps.apple.com/br/app/google-drive/id507874739" target="_blank" class="btn-app">
-                        🍎 Instalar no iPhone
-                    </a>
-                </div>
-
-                <p><span>Passo 2: Abra a nossa pasta segura</span><br>
-                Com o app instalado, clique no botão principal abaixo. O Google Drive será aberto automaticamente no seu celular.</p>
-                
-                <p><span>Passo 3: Envie os momentos!</span><br>
-                Dentro do aplicativo, clique no botão <strong>"+" (Novo)</strong>, selecione suas fotos e pronto! Volte para esta página para ver a galeria atualizar.</p>
+            <div class="upload-direto">
+                <label for="inputFoto" class="btn-escolher">📸 Escolher Foto</label>
+                <input type="file" id="inputFoto" accept="image/*" onchange="mostrarNomeArquivo()">
+                <div id="nomeArquivo" class="nome-arquivo">Nenhuma foto selecionada</div>
+                <button id="btnEnviar" class="btn" style="display: none;" onclick="enviarFotoParaDrive()">📤 Enviar para a Galeria</button>
             </div>
-
-            <a href="https://drive.google.com/drive/folders/1au7OjN-qA-ftx-V1lBKmurMF4Kb7heQw?usp=sharing" target="_blank" class="btn">
-                📤 Abrir Pasta para Enviar Fotos
-            </a>
-            
         </div>
     </section>
 
@@ -331,49 +92,73 @@
             <h2>Nossos Momentos</h2>
             <button onclick="carregarGaleria()" class="btn btn-secundario">Atualizar Galeria</button>
         </div>
-        
         <div class="galeria" id="galeria">
             <div class="status-msg">Carregando a magia... ✨</div>
         </div>
     </section>
 
     <script>
+        function mostrarNomeArquivo() {
+            const input = document.getElementById('inputFoto');
+            const labelNome = document.getElementById('nomeArquivo');
+            const btnEnviar = document.getElementById('btnEnviar');
+            if (input.files.length > 0) {
+                labelNome.innerText = "Pronto para enviar: " + input.files[0].name;
+                btnEnviar.style.display = "block";
+            }
+        }
+
+        async function enviarFotoParaDrive() {
+            const input = document.getElementById('inputFoto');
+            const btnEnviar = document.getElementById('btnEnviar');
+            if (input.files.length === 0) return;
+            const file = input.files[0];
+            btnEnviar.innerText = "⏳ Enviando foto...";
+            btnEnviar.disabled = true;
+
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                const base64Data = e.target.result.split(',')[1];
+                const formData = new URLSearchParams();
+                formData.append('fileName', file.name);
+                formData.append('mimeType', file.type);
+                formData.append('fileData', base64Data);
+
+                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyA3t1XSuxXjPkqCYckU9yHhkbcprWVQmifqjXsbdbjVQML3By-kVvTsH9xmbQ14wOB/exec"; 
+
+                try {
+                    await fetch(SCRIPT_URL, { method: 'POST', body: formData });
+                    alert("✨ Foto adicionada à galeria com sucesso!");
+                    input.value = "";
+                    btnEnviar.style.display = "none";
+                    carregarGaleria();
+                } catch (error) {
+                    alert("A foto foi processada! Atualize a galeria em instantes.");
+                    carregarGaleria();
+                } finally {
+                    btnEnviar.innerText = "📤 Enviar para a Galeria";
+                    btnEnviar.disabled = false;
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
         async function carregarGaleria() {
             const container = document.getElementById('galeria');
-            
             try {
                 const response = await fetch('/api/fotos');
                 const resultado = await response.json();
-                
-                if (resultado.status === 'erro') {
-                    container.innerHTML = `
-                        <div class="status-msg" style="color: #b71c1c; background-color: #ffebee; border: 1px solid #ffcdd2; padding: 20px; border-radius: 8px; text-align: left; max-width: 800px; margin: 0 auto; width: 100%;">
-                            <strong>⚠️ Erro na Integração:</strong><br><br>${resultado.mensagem}
-                        </div>`;
-                    return;
+                if (resultado.status === 'sucesso') {
+                    const fotos = resultado.dados;
+                    container.innerHTML = fotos.length === 0 ? '<div class="status-msg">Ainda não há fotos por aqui. Seja o primeiro a compartilhar! 📸</div>' : '';
+                    fotos.forEach(foto => {
+                        const card = document.createElement('div');
+                        card.className = 'foto-card';
+                        card.innerHTML = `<img src="/api/foto/${foto.id}" alt="${foto.name}" loading="lazy"><div class="foto-info">Compartilhado com carinho</div>`;
+                        container.appendChild(card);
+                    });
                 }
-                
-                const fotos = resultado.dados;
-                container.innerHTML = '';
-                
-                if (fotos.length === 0) {
-                    container.innerHTML = '<div class="status-msg">Ainda não há fotos por aqui. Seja o primeiro a compartilhar! 📸</div>';
-                    return;
-                }
-
-                fotos.forEach(foto => {
-                    const card = document.createElement('div');
-                    card.className = 'foto-card';
-                    card.innerHTML = `
-                        <img src="/api/foto/${foto.id}" alt="${foto.name}" loading="lazy">
-                        <div class="foto-info">Compartilhado com carinho</div>
-                    `;
-                    container.appendChild(card);
-                });
-            } catch (error) {
-                container.innerHTML = '<div class="status-msg" style="color: red;">Erro crítico ao se conectar com o servidor.</div>';
-                console.error(error);
-            }
+            } catch (error) { console.error(error); }
         }
 
         carregarGaleria();
