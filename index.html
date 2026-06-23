@@ -55,18 +55,16 @@
         .foto-info { padding: 15px 5px; font-size: 0.85rem; text-align: center; color: #888; font-style: italic; }
         .status-msg { text-align: center; font-size: 1.1rem; color: #888; grid-column: 1 / -1; padding: 40px 20px; }
 
-        /* =========================================
-           TELA DE CARREGAMENTO (OVERLAY)
-           ========================================= */
+        /* TELA DE CARREGAMENTO (OVERLAY) */
         #tela-carregamento {
-            display: none; /* Escondida por padrão */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.85); /* Fundo preto transparente */
-            z-index: 9999; /* Fica por cima de tudo no site */
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 9999;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -115,6 +113,7 @@
 </head>
 <body>
 
+    <!-- TELA DE CARREGAMENTO -->
     <div id="tela-carregamento">
         <div class="spinner"></div>
         <h3>Enviando a mágica...</h3>
@@ -144,7 +143,8 @@
     <section class="galeria-section">
         <div class="galeria-header">
             <h2>Nossos Momentos</h2>
-            <button onclick="carregarGaleria()" class="btn btn-secundario">Atualizar Galeria</button>
+            <!-- BOTAO ATUALIZADO AQUI: window.location.reload() -->
+            <button onclick="window.location.reload()" class="btn btn-secundario">Atualizar Galeria</button>
         </div>
         <div class="galeria" id="galeria">
             <div class="status-msg">Carregando a magia... ✨</div>
@@ -164,12 +164,11 @@
 
         async function enviarFotoParaDrive() {
             const input = document.getElementById('inputFoto');
-            const telaCarregamento = document.getElementById('tela-carregamento'); // Seleciona a tela preta
+            const telaCarregamento = document.getElementById('tela-carregamento');
             
             if (input.files.length === 0) return;
             const file = input.files[0];
             
-            // TRAVA A TELA E MOSTRA O SPINNER
             telaCarregamento.style.display = "flex";
 
             const reader = new FileReader();
@@ -193,7 +192,6 @@
                     alert("A foto foi processada! Atualize a galeria em instantes.");
                     carregarGaleria();
                 } finally {
-                    // ESCONDE A TELA DE CARREGAMENTO NO FINAL (Dando certo ou errado)
                     telaCarregamento.style.display = "none";
                 }
             };
