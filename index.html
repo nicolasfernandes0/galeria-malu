@@ -11,12 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
-        /* Regra essencial para evitar barra de rolagem horizontal no celular */
         *, *::before, *::after {
             box-sizing: border-box;
         }
 
-        /* Variáveis de Cores inspiradas no tema */
         :root {
             --cor-fundo: #faf6f6;
             --cor-primaria: #c27ba0;
@@ -88,13 +86,24 @@
             margin-top: 0;
             font-size: 1.8rem;
         }
+        
+        .texto-destaque {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: var(--cor-texto);
+        }
 
         .passo-a-passo {
             text-align: left;
-            margin: 20px auto 30px;
-            max-width: 500px;
+            margin: 0 auto 30px;
+            max-width: 550px;
             font-size: 1.05rem;
-            line-height: 1.8;
+            line-height: 1.6;
+        }
+
+        .passo-a-passo p {
+            margin-bottom: 15px;
         }
 
         .passo-a-passo span {
@@ -104,7 +113,7 @@
             margin-bottom: 5px;
         }
 
-        /* BOTÕES PRINCIPAIS */
+        /* BOTÕES */
         .btn {
             display: inline-block;
             background-color: var(--cor-primaria);
@@ -120,6 +129,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             width: auto;
+            margin-top: 10px;
         }
 
         .btn:hover { 
@@ -140,22 +150,12 @@
         }
 
         /* LINKS PARA BAIXAR O APP */
-        .apps-download {
-            margin-top: 40px;
-            padding-top: 25px;
-            border-top: 1px dashed #eadce1;
-        }
-
-        .apps-download p {
-            font-size: 0.95rem;
-            color: #777;
-            margin-bottom: 20px;
-        }
-
         .botoes-app {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 15px;
+            margin-top: 10px;
+            margin-bottom: 25px;
         }
 
         .btn-app {
@@ -165,14 +165,12 @@
             background-color: #f8f9fa;
             color: var(--cor-texto);
             text-decoration: none;
-            padding: 12px 20px;
-            font-size: 0.95rem;
+            padding: 10px 18px;
+            font-size: 0.9rem;
             font-weight: 500;
             border-radius: 8px;
             border: 1px solid #ddd;
             transition: all 0.2s ease;
-            flex: 1;
-            max-width: 250px;
         }
 
         .btn-app:hover {
@@ -248,47 +246,24 @@
             padding: 40px 20px; 
         }
 
-        /* =========================================
-           RESPONSIVIDADE MÁXIMA PARA CELULARES
-           ========================================= */
+        /* RESPONSIVIDADE PARA CELULARES */
         @media (max-width: 768px) {
-            .hero {
-                padding: 40px 15px 30px;
+            .hero { padding: 40px 15px 30px; }
+            .hero h1 { font-size: 2rem; }
+            .card-instrucoes { padding: 25px 15px; }
+            .card-instrucoes h2 { font-size: 1.5rem; }
+            .passo-a-passo { font-size: 1rem; }
+            
+            .botoes-app { 
+                flex-direction: column; 
+                gap: 10px; 
+                align-items: stretch;
             }
 
-            .hero h1 { 
-                font-size: 2rem; 
-            }
-
-            .card-instrucoes {
-                padding: 25px 15px;
-            }
-
-            .card-instrucoes h2 {
-                font-size: 1.5rem;
-            }
-
-            .passo-a-passo {
-                font-size: 1rem;
-            }
-
-            /* Botão principal ocupa a largura toda no celular para facilitar o clique */
             .btn {
                 width: 100%;
                 display: block;
                 padding: 15px;
-            }
-
-            /* Botões das lojas de app ficam um em cima do outro */
-            .botoes-app { 
-                flex-direction: column; 
-                gap: 10px; 
-                align-items: center;
-            }
-
-            .btn-app {
-                width: 100%;
-                max-width: 100%;
             }
 
             .galeria-header {
@@ -296,26 +271,18 @@
                 gap: 20px;
                 text-align: center;
             }
-
-            .galeria-header h2 {
-                font-size: 1.7rem;
-            }
-
-            /* A galeria no celular fica com 1 foto grande por linha (ou 2 menores dependendo da tela) */
+            .galeria-header h2 { font-size: 1.7rem; }
+            
             .galeria {
                 grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
                 gap: 25px;
             }
-
-            .foto-card img {
-                height: 300px; /* Aumenta um pouco a altura da foto no celular para valorizar a imagem */
-            }
+            .foto-card img { height: 300px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- CABEÇALHO / HOMENAGEM -->
     <header class="hero">
         <h1>15 Anos da Malu</h1>
         <p class="homenagem-texto">
@@ -326,39 +293,39 @@
         </p>
     </header>
 
-    <!-- ÁREA DE INSTRUÇÕES -->
     <section class="instrucoes-container">
         <div class="card-instrucoes">
-            <h2>Como enviar suas fotos?</h2>
+            <h2>Como adicionar suas fotos?</h2>
+            
+            <p class="texto-destaque">
+                Para enviar fotos direto do seu celular, você precisará ter o aplicativo do <strong>Google Drive</strong> instalado. Siga os passos:
+            </p>
             
             <div class="passo-a-passo">
-                <p><span>Passo 1:</span> Clique no botão abaixo para abrir a nossa pasta segura.</p>
-                <p><span>Passo 2:</span> Na tela que abrir, envie todas as fotos e vídeos que você tirou na festa.</p>
-                <p><span>Passo 3:</span> Volte para esta página e veja os seus registros (e os de todos os convidados) aparecerem na nossa galeria!</p>
+                <p><span>Passo 1: Baixe o App (se ainda não tiver)</span></p>
+                <div class="botoes-app">
+                    <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.docs" target="_blank" class="btn-app">
+                        🤖 Instalar no Android
+                    </a>
+                    <a href="https://apps.apple.com/br/app/google-drive/id507874739" target="_blank" class="btn-app">
+                        🍎 Instalar no iPhone
+                    </a>
+                </div>
+
+                <p><span>Passo 2: Abra a nossa pasta segura</span><br>
+                Com o app instalado, clique no botão principal abaixo. O Google Drive será aberto automaticamente no seu celular.</p>
+                
+                <p><span>Passo 3: Envie os momentos!</span><br>
+                Dentro do aplicativo, clique no botão <strong>"+" (Novo)</strong>, selecione suas fotos e pronto! Volte para esta página para ver a galeria atualizar.</p>
             </div>
 
-            <!-- Botão principal -->
             <a href="https://drive.google.com/drive/folders/1au7OjN-qA-ftx-V1lBKmurMF4Kb7heQw?usp=sharing" target="_blank" class="btn">
                 📤 Abrir Pasta para Enviar Fotos
             </a>
-
-            <!-- Seção: Download do App -->
-            <div class="apps-download">
-                <p>Ainda não tem o aplicativo do Google Drive no celular? Baixe agora:</p>
-                <div class="botoes-app">
-                    <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.docs" target="_blank" class="btn-app">
-                        🤖 Baixar para Android
-                    </a>
-                    <a href="https://apps.apple.com/br/app/google-drive/id507874739" target="_blank" class="btn-app">
-                        🍎 Baixar para iPhone
-                    </a>
-                </div>
-            </div>
             
         </div>
     </section>
 
-    <!-- ÁREA DA GALERIA DE FOTOS -->
     <section class="galeria-section">
         <div class="galeria-header">
             <h2>Nossos Momentos</h2>
@@ -370,7 +337,6 @@
         </div>
     </section>
 
-    <!-- SCRIPT DA APLICAÇÃO -->
     <script>
         async function carregarGaleria() {
             const container = document.getElementById('galeria');
