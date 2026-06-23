@@ -8,31 +8,29 @@ from googleapiclient.http import MediaIoBaseDownload
 
 app = Flask(__name__, template_folder='.')
 
-# CONFIGURAÇÕES DO GOOGLE (Versão de Leitura com Conta de Serviço)
+# CONFIGURAÇÕES DO GOOGLE
 SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
 SERVICE_ACCOUNT_FILE = 'credenciais.json'
-FOLDER_ID = '1au7OjN-qA-ftx-V1lBKmurMF4Kb7heQw' # ID corrigido sem o ?hl=pt-br
+FOLDER_ID = '1au7OjN-qA-ftx-V1lBKmurMF4Kb7heQw'
 
 def get_drive_service():
-    # Carrega as credenciais do arquivo JSON do robô
     creds = service_account.Credentials.from_service_account_file(
         SERVICE_ACCOUNT_FILE, scopes=SCOPES)
     return build('drive', 'v3', credentials=creds)
 
-# ROTA 1: Abre a página principal do sistema
 @app.route('/')
 def index():
     return render_template('index.html')
 
-# ROTA 2: API que lista as fotos da pasta
 @app.route('/api/fotos', methods=['GET'])
 def listar_fotos():
     try:
         service = get_drive_service()
         query = f"'{FOLDER_ID}' in parents and mimeType contains 'image/' and trashed = false"
         
+        # AQUI ESTÁ O SEGREDO: Pedimos o thumbnailLink para o Google
         results = service.files().list(
-            q=query, fields="files(id, name, mimeType)").execute()
+            q=query, fields="files(id, name, mimeType, thumbnailLink)").execute()
         items = results.get('files', [])
         
         return jsonify({"status": "sucesso", "dados": items})
@@ -44,7 +42,6 @@ def listar_fotos():
         print("="*40 + "\n")
         return jsonify({"status": "erro", "mensagem": repr(e)})
 
-# ROTA 3: API Proxy que baixa a imagem do Drive e envia para o HTML
 @app.route('/api/foto/<file_id>', methods=['GET'])
 def obter_foto(file_id):
     try:
