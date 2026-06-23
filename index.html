@@ -2,20 +2,26 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Galeria de Fotos - 15 Anos da Malu</title>
     
+    <!-- Fontes elegantes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
+        /* Regra essencial para evitar barra de rolagem horizontal no celular */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         /* Variáveis de Cores inspiradas no tema */
         :root {
-            --cor-fundo: #faf6f6; /* Fundo off-white puxado pro rosa */
-            --cor-primaria: #c27ba0; /* Rosa antigo / Rosé */
-            --cor-secundaria: #8e5c76; /* Rosé mais escuro para hover */
-            --cor-texto: #4a4a4a; /* Cinza chumbo elegante */
+            --cor-fundo: #faf6f6;
+            --cor-primaria: #c27ba0;
+            --cor-secundaria: #8e5c76;
+            --cor-texto: #4a4a4a;
             --cor-branco: #ffffff;
         }
 
@@ -40,6 +46,7 @@
             font-family: 'Playfair Display', serif; 
             color: var(--cor-primaria); 
             font-size: 2.5rem; 
+            margin-top: 0;
             margin-bottom: 10px;
             font-weight: 600;
         }
@@ -53,6 +60,12 @@
             line-height: 1.6;
         }
 
+        .hero p:last-child {
+            max-width: 600px; 
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
         /* SEÇÃO DE INSTRUÇÕES */
         .instrucoes-container {
             max-width: 800px;
@@ -62,7 +75,7 @@
 
         .card-instrucoes {
             background: var(--cor-branco);
-            padding: 30px;
+            padding: 40px;
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(194, 123, 160, 0.15);
             border-top: 4px solid var(--cor-primaria);
@@ -78,7 +91,7 @@
 
         .passo-a-passo {
             text-align: left;
-            margin: 20px auto;
+            margin: 20px auto 30px;
             max-width: 500px;
             font-size: 1.05rem;
             line-height: 1.8;
@@ -87,24 +100,26 @@
         .passo-a-passo span {
             font-weight: bold;
             color: var(--cor-primaria);
+            display: inline-block;
+            margin-bottom: 5px;
         }
 
-        /* BOTÕES */
+        /* BOTÕES PRINCIPAIS */
         .btn {
             display: inline-block;
             background-color: var(--cor-primaria);
             color: var(--cor-branco);
             text-decoration: none;
-            padding: 14px 28px;
+            padding: 16px 28px;
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: 600;
             border-radius: 30px;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 15px;
+            width: auto;
         }
 
         .btn:hover { 
@@ -122,6 +137,48 @@
         .btn-secundario:hover {
             background-color: var(--cor-primaria);
             color: var(--cor-branco);
+        }
+
+        /* LINKS PARA BAIXAR O APP */
+        .apps-download {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px dashed #eadce1;
+        }
+
+        .apps-download p {
+            font-size: 0.95rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .botoes-app {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn-app {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            color: var(--cor-texto);
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: all 0.2s ease;
+            flex: 1;
+            max-width: 250px;
+        }
+
+        .btn-app:hover {
+            background-color: var(--cor-primaria);
+            color: var(--cor-branco);
+            border-color: var(--cor-primaria);
         }
 
         /* SEÇÃO DA GALERIA */
@@ -149,11 +206,10 @@
 
         .galeria { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-            gap: 25px; 
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+            gap: 20px; 
         }
 
-        /* Estilo das Fotos (estilo Polaroid/Moldura elegante) */
         .foto-card { 
             background: var(--cor-branco); 
             border-radius: 8px; 
@@ -189,32 +245,88 @@
             font-size: 1.1rem; 
             color: #888; 
             grid-column: 1 / -1; 
-            padding: 40px; 
+            padding: 40px 20px; 
         }
 
-        /* Responsividade para celular */
-        @media (max-width: 600px) {
+        /* =========================================
+           RESPONSIVIDADE MÁXIMA PARA CELULARES
+           ========================================= */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 15px 30px;
+            }
+
+            .hero h1 { 
+                font-size: 2rem; 
+            }
+
+            .card-instrucoes {
+                padding: 25px 15px;
+            }
+
+            .card-instrucoes h2 {
+                font-size: 1.5rem;
+            }
+
+            .passo-a-passo {
+                font-size: 1rem;
+            }
+
+            /* Botão principal ocupa a largura toda no celular para facilitar o clique */
+            .btn {
+                width: 100%;
+                display: block;
+                padding: 15px;
+            }
+
+            /* Botões das lojas de app ficam um em cima do outro */
+            .botoes-app { 
+                flex-direction: column; 
+                gap: 10px; 
+                align-items: center;
+            }
+
+            .btn-app {
+                width: 100%;
+                max-width: 100%;
+            }
+
             .galeria-header {
                 flex-direction: column;
-                gap: 15px;
+                gap: 20px;
                 text-align: center;
             }
-            .hero h1 { font-size: 2rem; }
+
+            .galeria-header h2 {
+                font-size: 1.7rem;
+            }
+
+            /* A galeria no celular fica com 1 foto grande por linha (ou 2 menores dependendo da tela) */
+            .galeria {
+                grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+                gap: 25px;
+            }
+
+            .foto-card img {
+                height: 300px; /* Aumenta um pouco a altura da foto no celular para valorizar a imagem */
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- CABEÇALHO / HOMENAGEM -->
     <header class="hero">
         <h1>15 Anos da Malu</h1>
         <p class="homenagem-texto">
             "A vida é feita de momentos, e eu quero viver cada um deles intensamente!"
         </p>
-        <p style="max-width: 600px; margin: 0 auto;">
+        <p>
             Obrigada por fazer parte desta etapa tão especial da minha vida. Esta galeria é nossa! Ajude a eternizar essa noite mágica compartilhando os momentos pelo seu ponto de vista.
         </p>
     </header>
 
+    <!-- ÁREA DE INSTRUÇÕES -->
     <section class="instrucoes-container">
         <div class="card-instrucoes">
             <h2>Como enviar suas fotos?</h2>
@@ -225,12 +337,28 @@
                 <p><span>Passo 3:</span> Volte para esta página e veja os seus registros (e os de todos os convidados) aparecerem na nossa galeria!</p>
             </div>
 
+            <!-- Botão principal -->
             <a href="https://drive.google.com/drive/folders/1au7OjN-qA-ftx-V1lBKmurMF4Kb7heQw?usp=sharing" target="_blank" class="btn">
                 📤 Abrir Pasta para Enviar Fotos
             </a>
+
+            <!-- Seção: Download do App -->
+            <div class="apps-download">
+                <p>Ainda não tem o aplicativo do Google Drive no celular? Baixe agora:</p>
+                <div class="botoes-app">
+                    <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.docs" target="_blank" class="btn-app">
+                        🤖 Baixar para Android
+                    </a>
+                    <a href="https://apps.apple.com/br/app/google-drive/id507874739" target="_blank" class="btn-app">
+                        🍎 Baixar para iPhone
+                    </a>
+                </div>
+            </div>
+            
         </div>
     </section>
 
+    <!-- ÁREA DA GALERIA DE FOTOS -->
     <section class="galeria-section">
         <div class="galeria-header">
             <h2>Nossos Momentos</h2>
@@ -242,6 +370,7 @@
         </div>
     </section>
 
+    <!-- SCRIPT DA APLICAÇÃO -->
     <script>
         async function carregarGaleria() {
             const container = document.getElementById('galeria');
@@ -252,7 +381,7 @@
                 
                 if (resultado.status === 'erro') {
                     container.innerHTML = `
-                        <div class="status-msg" style="color: #b71c1c; background-color: #ffebee; border: 1px solid #ffcdd2; padding: 20px; border-radius: 8px; text-align: left; max-width: 800px; margin: 0 auto;">
+                        <div class="status-msg" style="color: #b71c1c; background-color: #ffebee; border: 1px solid #ffcdd2; padding: 20px; border-radius: 8px; text-align: left; max-width: 800px; margin: 0 auto; width: 100%;">
                             <strong>⚠️ Erro na Integração:</strong><br><br>${resultado.mensagem}
                         </div>`;
                     return;
@@ -281,10 +410,7 @@
             }
         }
 
-        // Inicia a galeria
         carregarGaleria();
-
-        // Atualiza as fotos automaticamente a cada 10 segundos
         setInterval(carregarGaleria, 10000);
     </script>
 </body>
