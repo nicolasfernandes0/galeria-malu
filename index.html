@@ -47,73 +47,55 @@
         .galeria-section { max-width: 1200px; margin: 0 auto; padding: 0 20px 60px; }
         .galeria-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #eadce1; padding-bottom: 15px; }
         .galeria-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--cor-texto); margin: 0; }
-        .galeria { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
         
-        .foto-card { background: var(--cor-branco); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s; padding: 10px 10px 0 10px; }
-        .foto-card:hover { transform: scale(1.02); box-shadow: 0 8px 25px rgba(194, 123, 160, 0.2); }
-        .foto-card img { width: 100%; height: 250px; object-fit: cover; border-radius: 4px; background-color: #f5f5f5; }
-        .foto-info { padding: 15px 5px; font-size: 0.85rem; text-align: center; color: #888; font-style: italic; }
+        .galeria { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
+        .foto-card { background: var(--cor-branco); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.2s; padding: 6px 6px 0 6px; cursor: pointer; }
+        .foto-card:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(194, 123, 160, 0.3); }
+        .foto-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 4px; background-color: #f5f5f5; }
+        .foto-info { padding: 10px 5px; font-size: 0.75rem; text-align: center; color: #aaa; font-style: italic; }
+        
         .status-msg { text-align: center; font-size: 1.1rem; color: #888; grid-column: 1 / -1; padding: 40px 20px; }
 
-        /* TELA DE CARREGAMENTO (OVERLAY) */
-        #tela-carregamento {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            z-index: 9999;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: var(--cor-branco);
-            text-align: center;
-            padding: 20px;
-        }
+        #tela-carregamento { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); z-index: 9999; flex-direction: column; justify-content: center; align-items: center; color: var(--cor-branco); text-align: center; padding: 20px; }
+        .spinner { width: 60px; height: 60px; border: 6px solid rgba(255, 255, 255, 0.2); border-top-color: var(--cor-primaria); border-radius: 50%; animation: girar 1s linear infinite; margin-bottom: 20px; }
+        @keyframes girar { to { transform: rotate(360deg); } }
+        #tela-carregamento h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 0 0 10px 0; color: var(--cor-primaria); }
+        #tela-carregamento p { font-size: 1rem; line-height: 1.5; max-width: 400px; color: #ddd; }
 
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 6px solid rgba(255, 255, 255, 0.2);
-            border-top-color: var(--cor-primaria);
-            border-radius: 50%;
-            animation: girar 1s linear infinite;
-            margin-bottom: 20px;
-        }
-
-        @keyframes girar {
-            to { transform: rotate(360deg); }
-        }
-
-        #tela-carregamento h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin: 0 0 10px 0;
-            color: var(--cor-primaria);
-        }
-
-        #tela-carregamento p {
-            font-size: 1rem;
-            line-height: 1.5;
-            max-width: 400px;
-            color: #ddd;
-        }
+        #lightbox { display: none; position: fixed; z-index: 10000; padding-top: 40px; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); }
+        #lightbox-img { margin: auto; display: block; max-width: 90%; max-height: 80vh; border-radius: 8px; box-shadow: 0 0 20px rgba(0,0,0,0.5); object-fit: contain; }
+        .lightbox-controles { position: absolute; width: 100%; top: 50%; display: flex; justify-content: space-between; padding: 0 20px; transform: translateY(-50%); pointer-events: none; }
+        .seta { color: white; font-size: 40px; font-weight: bold; cursor: pointer; transition: 0.3s; user-select: none; pointer-events: auto; padding: 10px; background: rgba(0,0,0,0.3); border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; }
+        .seta:hover { background-color: var(--cor-primaria); color: white; }
+        .fechar { position: absolute; top: 15px; right: 25px; color: #f1f1f1; font-size: 45px; font-weight: bold; cursor: pointer; transition: 0.3s; z-index: 10001; }
+        .fechar:hover, .fechar:focus { color: var(--cor-primaria); text-decoration: none; cursor: pointer; }
+        .contador-fotos { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #ccc; font-size: 1rem; letter-spacing: 2px; }
 
         @media (max-width: 768px) {
             .hero { padding: 40px 15px 30px; }
             .hero h1 { font-size: 2rem; }
             .card-instrucoes { padding: 25px 15px; }
             .galeria-header { flex-direction: column; gap: 20px; text-align: center; }
-            .galeria { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); gap: 25px; }
-            .foto-card img { height: 300px; }
+            .galeria { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+            .foto-card { padding: 4px 4px 0 4px; }
+            .foto-card img { height: 130px; }
+            .seta { width: 40px; height: 40px; font-size: 20px; }
+            .lightbox-controles { padding: 0 5px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- TELA DE CARREGAMENTO -->
+    <div id="lightbox">
+        <span class="fechar" onclick="fecharLightbox()">&times;</span>
+        <div class="lightbox-controles">
+            <span class="seta" onclick="mudarFoto(-1)">&#10094;</span>
+            <span class="seta" onclick="mudarFoto(1)">&#10095;</span>
+        </div>
+        <img id="lightbox-img" src="">
+        <div id="contador" class="contador-fotos"></div>
+    </div>
+
     <div id="tela-carregamento">
         <div class="spinner"></div>
         <h3>Enviando a mágica...</h3>
@@ -129,7 +111,7 @@
     <section class="instrucoes-container">
         <div class="card-instrucoes">
             <h2>Envie suas fotos agora</h2>
-            <p class="texto-destaque">Escolha uma foto da sua galeria ou tire uma nova câmera e envie direto por aqui.</p>
+            <p class="texto-destaque">Escolha uma foto da sua galeria ou tire uma nova da câmera e envie direto por aqui.</p>
             
             <div class="upload-direto">
                 <label for="inputFoto" class="btn-escolher">📸 Escolher Foto</label>
@@ -143,7 +125,6 @@
     <section class="galeria-section">
         <div class="galeria-header">
             <h2>Nossos Momentos</h2>
-            <!-- BOTAO ATUALIZADO AQUI: window.location.reload() -->
             <button onclick="window.location.reload()" class="btn btn-secundario">Atualizar Galeria</button>
         </div>
         <div class="galeria" id="galeria">
@@ -152,6 +133,9 @@
     </section>
 
     <script>
+        let listaDeFotos = [];
+        let indexAtual = 0;
+
         function mostrarNomeArquivo() {
             const input = document.getElementById('inputFoto');
             const labelNome = document.getElementById('nomeArquivo');
@@ -168,7 +152,6 @@
             
             if (input.files.length === 0) return;
             const file = input.files[0];
-            
             telaCarregamento.style.display = "flex";
 
             const reader = new FileReader();
@@ -179,6 +162,7 @@
                 formData.append('mimeType', file.type);
                 formData.append('fileData', base64Data);
 
+                // 🚨🚨🚨 COLE A SUA URL DO SCRIPT ABAIXO 🚨🚨🚨
                 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyA3t1XSuxXjPkqCYckU9yHhkbcprWVQmifqjXsbdbjVQML3By-kVvTsH9xmbQ14wOB/exec"; 
 
                 try {
@@ -187,10 +171,10 @@
                     input.value = "";
                     document.getElementById('nomeArquivo').innerText = "Nenhuma foto selecionada";
                     document.getElementById('btnEnviar').style.display = "none";
-                    carregarGaleria();
+                    window.location.reload(); 
                 } catch (error) {
                     alert("A foto foi processada! Atualize a galeria em instantes.");
-                    carregarGaleria();
+                    window.location.reload();
                 } finally {
                     telaCarregamento.style.display = "none";
                 }
@@ -203,21 +187,80 @@
             try {
                 const response = await fetch('/api/fotos');
                 const resultado = await response.json();
+                
                 if (resultado.status === 'sucesso') {
-                    const fotos = resultado.dados;
-                    container.innerHTML = fotos.length === 0 ? '<div class="status-msg">Ainda não há fotos por aqui. Seja o primeiro a compartilhar! 📸</div>' : '';
-                    fotos.forEach(foto => {
+                    listaDeFotos = resultado.dados;
+                    
+                    container.innerHTML = listaDeFotos.length === 0 ? '<div class="status-msg">Ainda não há fotos por aqui. Seja o primeiro a compartilhar! 📸</div>' : '';
+                    
+                    listaDeFotos.forEach((foto, index) => {
                         const card = document.createElement('div');
                         card.className = 'foto-card';
-                        card.innerHTML = `<img src="/api/foto/${foto.id}" alt="${foto.name}" loading="lazy"><div class="foto-info">Compartilhado com carinho</div>`;
+                        card.onclick = () => abrirLightbox(index);
+                        
+                        // MÁGICA DE VELOCIDADE: Pega o link oficial do Google e deixa levinho (=s400)
+                        let thumbRapida = foto.thumbnailLink ? foto.thumbnailLink.replace(/=s\d+/, '=s400') : `/api/foto/${foto.id}`;
+                        
+                        card.innerHTML = `<img src="${thumbRapida}" alt="${foto.name}" loading="lazy"><div class="foto-info">Ver em tela cheia</div>`;
                         container.appendChild(card);
                     });
                 }
             } catch (error) { console.error(error); }
         }
 
+        function abrirLightbox(index) {
+            indexAtual = index;
+            document.getElementById('lightbox').style.display = 'block';
+            atualizarImagemLightbox();
+        }
+
+        function fecharLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        function mudarFoto(direcao) {
+            indexAtual += direcao;
+            if (indexAtual >= listaDeFotos.length) indexAtual = 0;
+            if (indexAtual < 0) indexAtual = listaDeFotos.length - 1;
+            atualizarImagemLightbox();
+        }
+
+        function atualizarImagemLightbox() {
+            const imgEl = document.getElementById('lightbox-img');
+            const contadorEl = document.getElementById('contador');
+            imgEl.style.opacity = '0.5'; 
+            
+            let foto = listaDeFotos[indexAtual];
+            // Quando abre em tela cheia, pede uma foto maior e nítida (=s1080)
+            let fotoGrande = foto.thumbnailLink ? foto.thumbnailLink.replace(/=s\d+/, '=s1080') : `/api/foto/${foto.id}`;
+            
+            imgEl.src = fotoGrande;
+            contadorEl.innerText = `${indexAtual + 1} / ${listaDeFotos.length}`;
+            
+            imgEl.onload = () => { imgEl.style.opacity = '1'; }; 
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (document.getElementById('lightbox').style.display === 'block') {
+                if (event.key === "ArrowLeft") mudarFoto(-1);
+                if (event.key === "ArrowRight") mudarFoto(1);
+                if (event.key === "Escape") fecharLightbox();
+            }
+        });
+
+        let touchstartX = 0;
+        let touchendX = 0;
+        const lightboxElement = document.getElementById('lightbox');
+
+        lightboxElement.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; });
+        lightboxElement.addEventListener('touchend', e => { touchendX = e.changedTouches[0].screenX; handleSwipe(); });
+
+        function handleSwipe() {
+            if (touchendX < touchstartX - 50) mudarFoto(1); 
+            if (touchendX > touchstartX + 50) mudarFoto(-1); 
+        }
+
         carregarGaleria();
-        setInterval(carregarGaleria, 10000);
     </script>
 </body>
 </html>
